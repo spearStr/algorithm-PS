@@ -36,7 +36,7 @@ function solution(s) {
             continue;
         }
 
-        answer.push(tempString.slice(0, lastZeroIdx + 1) + add110 + tempString.slice(lastZeroIdx + 1, tempString.length))
+        answer.push(tempString.slice(0, lastZeroIdx + 1) + add110 + tempString.slice(lastZeroIdx + 1))
     }
     return answer
 }
