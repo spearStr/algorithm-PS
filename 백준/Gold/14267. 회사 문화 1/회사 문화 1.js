@@ -1,27 +1,27 @@
-const input = require('fs')
-	.readFileSync('/dev/stdin')
-	.toString()
-	.trim()
-	.split('\n');
+
+
+const fs = require('fs');
+const [first, second, ...input] = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+
+const [N, M] = first.split(' ').map(Number);
+const bosses = [-1, ...second.split(' ').map(Number)];
 
 function solution() {
 	let idx = 0;
 	let answer = [];
 
-	const [N, M] = input[idx++].split(' ').map(Number);
-	const parent = [-1, ...input[idx++].split(' ').map(Number)];
 	const child = Array(N + 1)
 		.fill()
 		.map(() => []);
 
-	for (let i = 2; i < parent.length; i++) {
-		child[parent[i]].push(i);
+	for (let i = 2; i < bosses.length; i++) {
+		child[bosses[i]].push(i);
 	}
 
 	const points = Array(N + 1).fill(0);
 
 	for (let i = 0; i < M; i++) {
-		const [num, point] = input[idx++].split(' ').map(Number);
+		const [num, point] = input[i].split(' ').map(Number);
 		points[num] += point;
 	}
 
